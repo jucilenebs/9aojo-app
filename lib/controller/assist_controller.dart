@@ -9,7 +9,9 @@ class AssistController extends GetxController with StateMixin<List<Assist>> {
     super.onInit();
     _service = Get.find<AssistService>();
   }
+
   void getAssistList() {
+    change([], status: RxStatus.loading());
     _service
       .getAssists()
       .then((value) => change(value, status: RxStatus.success()))
